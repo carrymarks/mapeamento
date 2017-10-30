@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_equipamento" value="name:A;datatype:string,name:Equipamentos;datatype:string" />
+	<infoitem key="UD_outroeqp" value="name:Tipo_Equipamento;datatype:string" />
+</info>

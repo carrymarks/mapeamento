@@ -1,0 +1,97 @@
+.ebul_mbmenu_usuario, .ebul_mbmenu_usuario ul {
+  background-color: #EBEBEB;
+  border: 1px solid #CFCFCF;
+  display: block;
+  font-size: 1px;
+  margin: 0px;
+  overflow: auto;
+  padding: 0px;
+  position: absolute;
+  visibility: hidden;
+}
+
+.ebul_mbmenu_usuario_shadow {
+  background-color: #777777;
+  display: block;
+  margin: 0px;
+  overflow: hidden;
+  position: absolute;
+  visibility: hidden;
+}
+
+.ebul_mbmenu_usuario table {
+  border-collapse: separate;
+}
+
+.ebul_mbmenu_usuario tr {
+  background-color: #EBEBEB;
+  cursor: pointer;
+  font-size: 1px;
+}
+
+.ebul_mbmenu_usuario td {
+  border: 1px solid #CFCFCF;
+  padding: 4px;
+  text-align: left;
+}
+
+.ebul_mbmenu_usuario td a, .ebul_mbmenu_usuario td a:visited {
+  color: #222222;
+  font-family: "Tahoma", serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.ebul_mbmenu_usuario tr.hot, .ebul_mbmenu_usuario tr.expanded {
+  background-color: #FFFFFF;
+}
+
+.ebul_mbmenu_usuario tr.hot td, .ebul_mbmenu_usuario tr.expanded td {
+  border-color: #CFCFCF;
+}
+.ebul_mbmenu_usuario tr.hot a, .ebul_mbmenu_usuario tr.expanded a {
+  color: #222222;
+  font-family: "Tahoma", serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.ebul_mbmenu_usuario td div.ebul_mbmenu_usuarioseparator {
+  border-top: 1px solid #222222;
+  height: 0px;
+  font-size: 0;
+}
+
+.ebul_mbmenu_usuario td.ebul_mbmenu_usuarioseparatortd {
+  cursor: default;
+}
+
+
+ul.ebul_mbmenu_usuario {
+  position: absolute;
+  visibility: hidden;
+}                               
+
+.mbmenu_usuarioebul_menulist .spaced_li {
+  padding: 0px 1px 0px 0px;
+}
+
+.mbmenu_usuarioebul_menulist li {
+  list-style: none;
+  float: left;
+}
+
+.mbmenu_usuarioebul_menulist img {
+  vertical-align: bottom;
+  
+}
+
+.mbmenu_usuarioebul_menulist {
+  margin: 0px;
+  padding: 0px;
+  line-height: 0px;
+}

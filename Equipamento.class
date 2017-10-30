@@ -1,0 +1,27 @@
+<?php 
+include "conexao.php";
+
+class Material{
+	var $cod;
+	var $acao;
+	var $etec;
+	var	$equipamento;
+	var	$modelo;
+	var	$especificacaoorgao;
+	var	$atualizacaotecnologica;
+	var	$baixapatrimonial;
+	var	$orgaoclasse;
+	var	$outroequipamento;
+	var	$aquisicao;
+	var	$anoaquisicao;
+	var	$outraunidade;
+	var	$especificacao;
+	var	$orgao;
+	var	$imagemeqp;
+	var	$patrimonio;
+	var $ociosidade;
+	var	$ambiente;
+	var $historico;
+	
+	}
+?>
