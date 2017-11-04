@@ -10,15 +10,19 @@ já construídos, segue respondendo as perguntas do sistema.
   
 #Melhoria a ser realizada
 
-  - A Home terá que ser atualizada, de forma estática mesmo conforme documento anexo no projeto;
+  - ~~A Home terá que ser atualizada, de forma estática mesmo conforme documento anexo no projeto;~~
   
-  - Ao finalizar o cadastramento o usuário terá um protocolo, após o término de todo o preenchimento afim de garantir sua entrega no prazo;
-    Obs: pode ser um alphanumerico sequencial ou não em formato PDF ou JPG.
+  - ~~Ao finalizar o cadastramento o usuário terá um protocolo, após o término de todo o preenchimento afim de garantir sua entrega no prazo;
+    Obs: pode ser um alphanumerico sequencial ou não em formato PDF ou JPG.~~
   
-  - Na área administrativa será necessário ver todos os protocolos de entregues, desses formulários já preenchidos corretamente com os
-    campos: ID, NOME-DA-ESCOLA, DATA, HORA DA ENTREGA - Conforme documento anexo;
+  - ~~Na área administrativa será necessário ver todos os protocolos de entregues, desses formulários já preenchidos corretamente com os
+    campos: ID, NOME-DA-ESCOLA, DATA, HORA DA ENTREGA - Conforme documento anexo;~~
   
-  - Atualização das tabelas para armazenar os dados dos protocolos e armazenamentos dos dados; (Dump do BD anexo ao projeto)
+  - ~~Atualização das tabelas para armazenar os dados dos protocolos e armazenamentos dos dados; (Dump do BD anexo ao projeto)~~
   
-  - IMPORTANTE: Os dados cadastraris iniciais, tais como, nomes, endereços e informações sobre o local/estabelecimento deverão ser mantidos,
-    apenas dados como, salas de aula, cursos e horários deverão vir limpos para preenchimento; NÃO DEVERÁ SOBREESCREVER DADOS;
+  - ~~IMPORTANTE: Os dados cadastraris iniciais, tais como, nomes, endereços e informações sobre o local/estabelecimento deverão ser mantidos,
+    apenas dados como, salas de aula, cursos e horários deverão vir limpos para preenchimento; NÃO DEVERÁ SOBREESCREVER DADOS;~~
+
+  - Script de criação da tabela de protocolo se encontra no arquivo tbl_protocolo.sql, dentro da pasta **_DUMP-BD**
+
+  - Foram implementadas as telas novas no sistema antigo.
