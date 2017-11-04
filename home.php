@@ -1,10 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php 
-
+error_reporting(0);
+ini_set("display_errors", 0 );
 
 if(!isset($_SESSION)) 
 { session_start(); 
-unset($_SESSION['dados_equipamento']);
+  unset($_SESSION['dados_equipamento']);
 } 
 
 if ($_SESSION['logado'] == 1) {
@@ -26,13 +27,12 @@ $usr=$_REQUEST['usr'] ;
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Home - Mapeamento</title>
 <style type="text/css">
-<!--
+
 h2 {
   font-size: 9px;
 }
--->
-</style>
 
+</style>
 <script>
 function gera_protocolo()
 {
@@ -99,9 +99,9 @@ $linhae=mysql_fetch_array($comandoe);
 <form id="form1" name="form1" method="post" action="">
   <table width="860" border="0">
 
-
     <tr align="center">
-      <td colspan="7" align="right"><h2><?php if($medio=="Comum"){?><a href="listasuporte.php?us=<?php echo $us;?>"><img src="suporte_icone.jpg" alt="" width="19" height="19" /><b> Suporte</a></h2><?php } if($medio=="Administrador" and $supervisor!="S"){ ?><a href="listasuporteadm.php?us=<?php echo $us;?>"><img src="suporte_icone.jpg" alt="" width="19" height="19" /><b> Suporte</a></h2><?php } ?></td>
+      <td colspan="7" align="right"><h2><?php if($medio=="Comum"){?><a href="listasuporte.php?us=<?php echo $us;?>">
+        <img src="suporte_icone.jpg" alt="" width="19" height="19" /><b> Suporte</a></h2><?php } if($medio=="Administrador" and $supervisor!="S"){ ?><a href="listasuporteadm.php?us=<?php echo $us;?>"><img src="suporte_icone.jpg" alt="" width="19" height="19" /><b> Suporte</a></h2><?php } ?></td>
     </tr>
     <tr align="center">
       <td colspan="6"><strong>Home</strong></td>
@@ -133,11 +133,16 @@ modelos de uso e orientações.</p>
 
     <tr>
       <td>&nbsp;</td>
-      <td align="center"><?php if($medio=="Administrador" and $supervisor!="S"){ ?><a href="Lst_fechamentoabertura.php?us=<?php echo $us; ?>"><h2>Abertura e Fechamento</h2></a>
-      <a href="#" onclick="gera_protocolo()"><img src="check.png"  alt="" width="32" height="32" /><h2>Confirmar Atualização</h2></a>
-      <a href="protocolos.php?us=<?php echo $us; ?>&usr=<?php echo $usr; ?>"><img src="protocolo.png"  alt="" width="32" height="32" /><h2>Protocolos</h2></a><?php } else {?>
-      <a href="#" onclick="gera_protocolo()"><img src="check.png"  alt="" width="32" height="32" /><h2>Confirmar Atualização</h2></a><?php }?></td>
-
+      <td align="center">
+      <?php if($medio=="Administrador" and $supervisor!="S"){ ?>
+        <a href="protocolos.php?us=<?php echo $us; ?>&usr=<?php echo $usr; ?>"><img src="protocolo.png"  alt="" width="32" height="32" />
+          <h2>Protocolos</h2>
+        </a>
+        <a href="Lst_fechamentoabertura.php?us=<?php echo $us; ?>"><h2>Abertura e Fechamento</h2></a>
+      <?php } else { ?>
+        <a href="protocolos.php?us=<?php echo $us; ?>&usr=<?php echo $usr; ?>"><img src="check.png"  alt="" width="32" height="32" /><h2>Confirmar Atualização</h2></a>
+      <?php } ?>  
+      </td>
     </tr>
 
     <tr align="center">

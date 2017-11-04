@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php 
-
+error_reporting(E_ALL ^ E_DEPRECATED);
 
 if(!isset($_SESSION)) 
 { session_start(); 

@@ -23,7 +23,10 @@ h1 {
     <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr bgcolor="#96211A">
         <td><h1><strong>
-          <?php
+<?php
+
+date_default_timezone_set( "America/Sao_Paulo" );
+
 	if(!isset($_SESSION)) 
 { 
 session_start(); 

@@ -1,204 +1,122 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <?php 
 
+include "conexao_Geral.php";
 
-if(!isset($_SESSION)) 
-{ session_start(); 
-unset($_SESSION['dados_equipamento']);
+error_reporting(0);
+ini_set("display_errors", 0 );
+
+if(!isset($_SESSION)) { 
+  session_start(); 
+  unset($_SESSION['dados_equipamento']);
 } 
 
-if ($_SESSION['logado'] == 1) {
-  
+$logado = $_SESSION['logado'];
+if ($logado == 1) {
   header ("Location: index.php");
-  
-  $logado=$_SESSION['logado'];
-  
-  }
-?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>Protocolos - Mapeamento</title>
-<?php
-include "conexao_Geral.php";
-include "topo.php";
-include("testemenu.php");
-$usr=$_REQUEST['usr'] ;
-?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Home - Mapeamento</title>
-<style type="text/css">
-<!--
-h2 {
-  font-size: 9px;
 }
--->
-</style>
 
-<script>
-function gera_protocolo()
-{
+$us   = $_GET['us'];
+$usr  = $_GET['usr'];
 
-<?php
-
-$data=date("d/m/Y H:i:s");
-$usr=$_REQUEST['usr'] ;
-$ger= "INSERT INTO tbl_protocolo (usuario,data) VALUES ('$usr','$data')";
-$qry=mysql_query($ger);
 ?>
 
-<?php 
-$select="Select id_proc,data,usuario from tbl_protocolo
-Order By id_proc DESC
-limit 1";
-$qry2=mysql_query($select);
-$arr=mysql_fetch_array($qry2);
-$prot=$arr['id_proc'];
-$data=$arr['data'];
-?>
+<html lang="pt_BR">
 
-alert("Gerado o Protocolo <?php echo $prot; ?>  em  <?php echo $data; ?>."); // this is the message in ""
-}
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GFAC - Mapeamento 2017 | CEETEPS - Protocolos</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!--Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
+
 <body>
-<?php 
 
+<div class="container">
+    <!-- container -->
+    <div class="row">
+      <div class="col-md-4 col-sm-4">
+        <img class="img-responsive" src="assets/img/eteclogo.png" alt="">
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <img class="img-responsive" src="assets/img/logocps.png" alt="">
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <img class="img-responsive" src="assets/img/logo_estado_sp.png" alt="">
+      </div>
+    </div>
 
+    <div class="row header">
+      <div class="col-md-6">
+        <h4 class="alert-heading">SISTEMA DE MAPEAMENTO DE LABORATÓRIOS</h4>
+      </div>
+      <div class="col-md-6 form-login">
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">Usuário</div>
+              <input type="text" class="form-control" id="exampleInputAmount" value="<?php echo $usr; ?>" readonly>
+            </div>
+          </div>
+          <a href="index.php" class="btn btn-primary btn-sm">SAIR</a>
+        </form>
+      </div>
+    </div>
 
-  $us=base64_decode($us);
-$sql="select * from tbl_usuario where `PK_Login`='$us'";
-  $comando=mysql_query($sql);
-  $linha=mysql_fetch_array($comando);
-  $etec =$linha['FK_Etec'];
-  $medio=$linha['Nivel_Acesso'];
-$fketec=$linha['FK_Etec'];
-$supervisor=$linha['Supervisor'];
-$us=base64_encode($us);
-$us=base64_encode($us);
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+          <?php
+            if ($usr == "Administrador") {
+              echo "PROTOCOLOS";
+            } else {
+              echo "PROTOCOLAR";
+            }
+          ?>
+          <a href="<?php echo "home.php?us=$us&usr=$usr"; ?>" class="btn btn-primary btn-xs pull-right">VOLTAR</a>
+      </div>
+      <?php
+          $page = 'protocolo-register.php';
+          if ($usr == "Administrador") {
+            $page = 'protocolo-list.php';
+          }
+          include_once($page);
+      ?>
+    </div>
 
+    <div class="bar_menu footer">
+      <h5>Sistema de Mapeamento de Laboratórios | 2017 | GFAC</h5>
+    </div>
 
-if($medio!="Administrador"){
+    <!-- finish container -->
 
-include "menu_usuario.php";
-  }else{  
-//echo "$us"; 
-$us=base64_decode($us);
+    <script src="assets/js/jquery-3.1.0.min.js"></script>
 
-include ("menu.php");  
+    <!--Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
-    }  
-?>
-<?php 
-
-$sqle="select * from tbl_etec where PK_CodEtec='$etec'";
-
-$comandoe=mysql_query($sqle);
-$linhae=mysql_fetch_array($comandoe);
-
-?>
-
-<?php 
-$cont=0;
-$sel="SELECT usuario,max(id_proc) protocolo ,max(data) data FROM `tbl_protocolo`
-where usuario<>''
-group by usuario
-order by usuario asc";
-$qry=mysql_query($sel);
-while($dados=mysql_fetch_array($qry)){
-    $usu[]=$dados['usuario'];
-    $pro[]=$dados['protocolo'];
-    $dat[]=$dados['data'];
-    $cont++;
-    }
-
-?>
-<table width="860" border="0">
-    <tr align="center">
-      <td colspan="7" align="right"><h2><?php if($medio=="Comum"){?><a href="listasuporte.php?us=<?php echo $us;?>"><img src="suporte_icone.jpg" alt="" width="19" height="19" /><b> Suporte</a></h2><?php } if($medio=="Administrador" and $supervisor!="S"){ ?><a href="listasuporteadm.php?us=<?php echo $us;?>"><img src="suporte_icone.jpg" alt="" width="19" height="19" /><b> Suporte</a></h2><?php } ?></td>
-    </tr>
-    <tr align="center">
-      <td colspan="6"><strong>Protocolos</strong></td>
-      <td width="46"><a href="Frm_Relatorio.php?us=<?php echo $us; ?>"><img src="chart_bar.png" width="32" height="32" /></a></td>
-    </tr>
-    <tr>
-      <td width="33">&nbsp;</td>
-      <td colspan="5" rowspan="14" valign="top">
-        <table colspan="10" rowspan="14" valign="center" align="center" style="border-spacing: 20px 10px;">
-           <tr align="center"><td><strong> Usuário</strong> </td> <td><strong> Protocolo</strong></td><td><strong>Data</strong></td></tr>
-           <?php 
-          for($i=0;$i<$cont;$i++){
-          echo '<tr><td>'.$usu[$i].'</td><td>'.$pro[$i].'</td><td>'.$dat[$i].'</td></tr>';           
-           }
-           ?>
-           </table>   
-      <p><img src="etecimagem.jpg" width="373" height="135" /></p></td>
-      <td align="center" title="Download Arquivos Mapeamento"><a href="Frm_DownloadMaterial.php?us=<?php echo $us; ?>"><img src="downloadd.png" alt="" width="32" height="32" /></a></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td align="center"><?php if($medio=="Administrador" and $supervisor!="S"){ ?><a href="Lst_fechamentoabertura.php?us=<?php echo $us; ?>"><h2>Abertura e Fechamento</h2></a>
-      <a href="#" onclick="gera_protocolo()"><img src="check.png"  alt="" width="32" height="32" /><h2>Confirmar Atualização</h2></a><?php } ?></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </table>
-<form id="form1" name="form1" method="post" action="">
-  
-</form>
-<p>
-<span class="tarja_tabela"><a href="frm_suporte.php?us=<?php echo $us;?>"></a></span></p>
-<p>&nbsp;</p>
+    <script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost +
+			"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		var pageTracker = _gat._getTracker("UA-3595013-1");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+	</script>
 
 </body>
-<?php 
-
-include "footer.html";
-?>
-
 
 </html>
